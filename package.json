@@ -1,0 +1,34 @@
+{
+  "name": "@devoll/trace-image",
+  "version": "0.0.1",
+  "description": "Adobe Illustrator's script for trace aquarelle to vector and save for FreePick",
+  "main": "script.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devoll/trace-image-batch-ai.git"
+  },
+  "keywords": [
+    "adobe",
+    "illustrator",
+    "adobe",
+    "script",
+    "automator",
+    "trace",
+    "image",
+    "freepick",
+    "photo",
+    "stocks"
+  ],
+  "author": "Pavel Nikitaev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/devoll/trace-image-batch-ai/issues"
+  },
+  "homepage": "https://github.com/devoll/trace-image-batch-ai#readme",
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  }
+}
