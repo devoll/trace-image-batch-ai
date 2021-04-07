@@ -4,7 +4,9 @@
   "description": "Adobe Illustrator's script for trace aquarelle to vector and save for FreePick",
   "main": "script.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "copy": "sudo cp ./dist/StockBucketScript.js /Applications/Adobe\\ Illustrator\\ 2021/Presets.localized/en_GB/Scripts",
+
   },
   "repository": {
     "type": "git",
