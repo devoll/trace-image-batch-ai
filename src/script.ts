@@ -4,22 +4,24 @@
  * Special for Alinafineart
  *****/
 
+import {i18n} from "./libs/helpers";
+
 // TODO: добавить проверку на входные параметры JPG (для фрипика посмотреть параметры)
 // Подправить если можно jpeg (привести к нужным параметрам минимальным или максимальным)
 // Если не удается привести к параметрам - выдать ошибку
 
 (() => {
-    const sourceFolder = Folder.selectDialog("Выберите каталог с файлами JPG, которые необходимо оттрасировать") as Folder;
+    const sourceFolder = Folder.selectDialog(i18n("CHOOSE_SRC_FOLDER")) as Folder;
 
     if(!sourceFolder){
-        alert("Ошибка выбора каталога");
+        alert(i18n("CHOOSE_SRC_FOLDER_ERROR"));
         return;
     }
 
     const files = sourceFolder.getFiles("*.jpg");
 
     if(!files || files.length == 0){
-        alert("В каталоге отсутствуют файлы JPG");
+        alert(i18n("CHOOSE_SRC_FOLDER_EMPTY"));
         return;
     }
 
