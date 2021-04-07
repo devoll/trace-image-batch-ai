@@ -1,5 +1,7 @@
 // declare module Adobe {
 
+    declare function alert(string): void;
+
     declare var app: App;
 
     /**
@@ -439,8 +441,12 @@
 
     }
 
-    declare class Point {
-
+    declare class Point extends Array {
+        left: number;
+        readonly length: number;
+        top: number;
+        x: number;
+        y: number;
     }
 
     declare class SaveOptions {
@@ -809,8 +815,31 @@
 
     }
 
-    declare class Artboards {
+    declare class Artboards extends Array<Artboard> {
+        readonly length: number;
+        readonly parent: Artboard;
+        readonly typename: string;
 
+        add(artboardRect: Rect): Artboard;
+        getActiveArtboardIndex(): number;
+        getByName(name: string): Artboard;
+        insert(artboardRect: Rect, index: number): void;
+        remove(index: number): void;
+        setActiveArtboardIndex(index: number): void;
+    }
+
+    declare class Artboard {
+        artboardRect: Rect;
+        name: string;
+        readonly parent: Document;
+        rulerOrigin: Point;
+        rulerPAR: number;
+        showCenter: boolean;
+        showCrossHairs: boolean;
+        showSafeAreas: boolean;
+        readonly typename: string;
+
+        remove(): void;
     }
 
     declare class Brushes {
@@ -865,7 +894,11 @@
 
     }
 
-    declare class PageItems extends Array {
+    declare class PageItems extends Array<PageItem> {
+
+    }
+
+    declare class PageItem {
 
     }
 
@@ -873,7 +906,161 @@
 
     }
 
-    declare class PathItems {
+    declare class PathItems extends Array<PathItem>{
+        readonly length: number;
+        readonly parent: any;
+        readonly typename: string;
+
+        add(): PathItem;
+        ellipse(
+            top?: number,
+            left?: number,
+            width?: number,
+            height?: number,
+            reversed?: boolean,
+            inscribed?: boolean
+        ): PathItem
+        getByName(name: string): PathItem;
+        index(itemKey: string | number): PathItem;
+        polygon(
+            centerX?: number,
+            centerY?: number,
+            radius?: number,
+            sides?: number,
+            reversed?: boolean
+        ): PathItem;
+        rectangle(
+            top: number,
+            left: number,
+            width: number,
+            height: number,
+            reversed?: boolean
+        ): PathItem;
+        removeAll(): void;
+        roundedRectangle(
+            top: number,
+            left: number,
+            width: number,
+            height: number,
+            horizontalRadius?: number,
+            verticalRadius?: number,
+            reversed?: boolean
+        ): PathItem;
+        star(
+            centerX?: number,
+            centerY?: number,
+            radius?: number,
+            innerRadius?: number,
+            points?: number,
+            reversed?: number
+        ): PathItem;
+    }
+
+    declare class PathItem {
+        readonly area: number;
+        artworkKnockout: KnockoutState;
+        blendingMode: BlendModes;
+        clipping: boolean;
+        closed: boolean;
+        readonly controlBounds: [ number, number, number, number ];
+        readonly editable: boolean;
+        evenodd: boolean;
+        fillColor: Color;
+        filled: boolean;
+        fillOverprint: boolean;
+        readonly geometricBounds: [ number, number, number, number ];
+        guides: boolean;
+        height: number;
+        hidden: boolean;
+        isIsolated: boolean;
+        layer: Layer;
+        left: number;
+        length: number;
+        locked: boolean;
+        name: string;
+        note: string;
+        opacity: number;
+        parent: Layer | GroupItem;
+        pathPoints: PathPoints;
+        pixelAligned: boolean;
+        polarity: PolarityValues;
+        position: [ number, number ];
+        resolution: number;
+        selected: boolean;
+        readonly selectedPathPoints: PathPoints;
+        sliced: boolean;
+        strokeCap: StrokeCap;
+        strokeColor: Color;
+        stroked: true;
+        strokeDashes: object;
+        strokeDashOffset: number;
+        strokeJoin: StrokeJoin;
+        strokeMiterLimit: numnber;
+        strokeOverprint: boolean;
+        strokeWidth: number;
+        readonly tags: Tags;
+        top: number;
+        readonly typename: string;
+        uRL: string;
+        visibilityVariable: Variable;
+        readonly visibleBounds: [ number, number, number, number ];
+        width: number;
+        wrapInside: boolean;
+        wrapOffset:  number;
+        wrapped: boolean;
+        readonly zOrderPosition: number;
+
+        duplicate(relativeObject?: object, insertionLocation?: ElementPlacement): PathItem;
+        move(relativeObject: object, insertionLocation: ElementPlacement): PathItem;
+        remove(): void;
+        resize(
+            scaleX: number,
+            scaleY: number,
+            changePositions?: boolean,
+            changeFillPatterns?: boolean,
+            changeFillGradients?: boolean,
+            changeStrokePattern?: boolean,
+            changeLineWidths?: number,
+            scaleAbout?: Transformation
+        ): void;
+        rotate(
+            angle: number,
+            changePositions?: boolean,
+            changeFillPatterns?: boolean,
+            changeFillGradients?: boolean,
+            changeStrokePattern?: boolean,
+            rotateAbout?: Transformation
+        ): void;
+        setEntirePath(pathPoints: Array<[ number, number]>): void;
+        transform(
+            transformationMatrix: Matrix,
+            changePositions?: boolean,
+            changeFillPatterns?: boolean,
+            changeFillGradients?: boolean,
+            changeStrokePattern?: boolean,
+            changeLineWidths?: number,
+            transformAbout?: Transformation
+        ): void;
+        translate(
+            deltaX?: number,
+            deltaY?: number,
+            transformObjects?: boolean,
+            transformFillPatterns?: boolean,
+            transformFillGradients?: boolean,
+            transformStrokePatterns?: boolean
+        ): void;
+        zOrder(zOrderCmd: ZOrderMethod): void;
+    }
+
+    declare class PolarityValues {
+
+    }
+
+    declare class PathPoints {
+
+    }
+
+    declare class KnockoutState {
 
     }
 
