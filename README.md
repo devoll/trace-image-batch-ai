@@ -7,7 +7,7 @@ Automation script for trace raster images and save as EPS with options for Freep
 * Adobe Illustrator
 
 ## Release
-<link will be here later>
+[v0.0.2](https://github.com/devoll/trace-image-batch-ai/releases/tag/v0.0.2)
 
 ## How to use
 1. Download release script
