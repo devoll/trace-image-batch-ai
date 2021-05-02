@@ -5,7 +5,8 @@
   "main": "script.ts",
   "scripts": {
     "build": "tsc",
-    "copy": "sudo cp ./dist/StockBucketScript.js /Applications/Adobe\\ Illustrator\\ 2021/Presets.localized/en_GB/Scripts"
+    "copy": "sudo cp ./dist/StockBucketScript.js /Applications/Adobe\\ Illustrator\\ 2021/Presets.localized/en_GB/Scripts",
+    "test": "npm run build && npm run copy"
   },
   "repository": {
     "type": "git",
