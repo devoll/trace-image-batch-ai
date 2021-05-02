@@ -298,7 +298,7 @@
         readonly name: string;
         readonly nonNativeItems: NonNativeItems;
         readonly outputResolution: number;
-        readonly pageItems: Array;
+        readonly pageItems: PageItems;
         pageOrigin: [number, number];
         readonly paragraphStyles: ParagraphStyles;
         readonly parent: Application;
@@ -438,7 +438,37 @@
     }
 
     declare class ExportType {
+        static FLASH;
+        static GIF;
+        static JPEG;
+        static Photoshop;
+        static AutoCAD;
+        static PNG24;
+        static PNG8;
+        static SVG;
+        static TIFF;
+    }
 
+    declare class ExportOptionsJPEG {
+        antiAliasing: boolean = true;
+        artBoardClipping: boolean;
+        blurAmount: number = 0.0;
+        horizontalScale: number = 100.0;
+        matte: boolean = true;
+        matteColor: RGBColor;
+        optimization: boolean = true;
+        qualitySetting: number = 30;
+        saveAsHtml: boolean = false;
+        readonly typename: string;
+        verticalScale: number = 100.0;
+
+    }
+
+    declare class RGBColor {
+        blue: number;
+        green: number;
+        red: number;
+        readonly typename: string;
     }
 
     declare class Point extends Array {
@@ -638,7 +668,7 @@
     }
 
     declare class GroupItem {
-
+        readonly typename: string;
     }
 
     declare class RasterLinkState {
@@ -850,8 +880,12 @@
 
     }
 
-    declare class CompoundPathItems {
+    declare class CompoundPathItems extends Array<CompoundPathItem>{
 
+    }
+
+    declare class CompoundPathItem {
+        readonly typename: string;
     }
 
     declare class CropOptions {
@@ -874,32 +908,129 @@
 
     }
 
-    declare class GraphItems {
+    declare class GraphItems extends Array<GraphItem> {
 
+    }
+
+    declare class GraphItem {
+        readonly typename: string;
     }
 
     declare class GroupItems {
 
     }
 
-    declare class LegacyTextItems {
+    declare class LegacyTextItems extends Array<LegacyTextItem> {
 
     }
 
-    declare class MeshItems {
+    declare class LegacyTextItem {
+        readonly typename: string;
+    }
+
+    declare class MeshItems extends Array<MeshItem> {
 
     }
 
-    declare class NonNativeItems {
+    declare class MeshItem {
+        readonly typename: string;
+    }
+
+    declare class NonNativeItems extends Array<NonNativeItem> {
 
     }
 
-    declare class PageItems extends Array<PageItem> {
+    declare class NonNativeItem {
+        readonly typename: string;
+    }
 
+    declare class PageItems extends Array<PageItem | CompoundPathItem | GraphItem | GroupItem | LegacyTextItem | MeshItem | NonNativeItem | PathItem | PlacedItem | PluginItem | RasterItem | SymbolItem | TextFrameItem > {
+        readonly length: number;
+        readonly parent: any;
+        readonly typename: string;
+
+        getByName(name: string): PageItem;
+        index(itemKey: string | number): PageItem;
+        removeAll(): void;
     }
 
     declare class PageItem {
+        artworkKnockout: KnockoutState;
+        blendingMode: BlendModes;
+        readonly controlBounds: [ number, number, number, number ];
+        readonly editable: boolean;
+        readonly geometricBounds: [ number, number, number, number ];
+        height: number;
+        hidden: boolean;
+        isIsolated: boolean;
+        readonly layer: Layer;
+        left: number;
+        locked: boolean;
+        name: string;
+        note: string;
+        opacity: number;
+        readonly parent: Layer | GroupItem;
+        pixelAligned: boolean;
+        position: Point;
+        selected: boolean;
+        sliced: boolean;
+        tags: Tags;
+        top: number;
+        readonly typename: string = 'PageItem';
+        URL: string;
+        visibilityVariable: any;
+        width: number;
+        wrapInside: boolean;
+        wrapOffset: number;
+        wrapped: boolean;
+        readonly zOrderPosition: number;
 
+        bringInPerspective(
+            posX: number,
+            posY: number,
+            perspectiveGridPlane: PerspectiveGridPlaneType
+        ): void;
+
+        resize(
+            scaleX: number,
+            scaleY: number,
+            changePositions?: boolean,
+            changeFillPatterns?: boolean,
+            changeFillGradients?: boolean,
+            changeStrokePattern?: boolean,
+            changeLineWidths?: number,
+            scaleAbout?: Transformation
+        ): void;
+
+        rotate(
+            angle: number,
+            changePositions?: boolean,
+            changeFillPatterns?: boolean,
+            changeFillGradients?: boolean,
+            changeStrokePattern?: boolean,
+            rotateAbout?: Transformation
+        ): void;
+
+        transform(
+            transformationMatrix: Matrix,
+            changePositions?: boolean,
+            changeFillPatterns?: boolean,
+            changeFillGradients?: boolean,
+            changeStrokePattern?: boolean,
+            changeLineWidths?: number,
+            transformAbout?: Transformation
+        ): void;
+
+        translate(
+            deltaX?: number,
+            deltaY?: number,
+            transformObjects?: boolean,
+            transformFillPatterns?: boolean,
+            transformFillGradients?: boolean,
+            transformStrokePatterns?: boolean
+        ): void;
+
+        zOrder(zOrderCmd: ZOrderMethod): void;
     }
 
     declare class ParagraphStyles {
@@ -1000,7 +1131,7 @@
         strokeWidth: number;
         readonly tags: Tags;
         top: number;
-        readonly typename: string;
+        readonly typename: string = 'PathItem';
         uRL: string;
         visibilityVariable: Variable;
         readonly visibleBounds: [ number, number, number, number ];
@@ -1060,16 +1191,16 @@
 
     }
 
-    declare class KnockoutState {
-
-    }
-
     declare class Patterns {
 
     }
 
-    declare class PlacedItems {
+    declare class PlacedItems extends Array<PlacedItem> {
 
+    }
+
+    declare class PlacedItem {
+        readonly typename: string = 'PlacedItem';
     }
 
     declare class RasterEffectOptions {
@@ -1100,16 +1231,24 @@
 
     }
 
-    declare class SymbolItems {
+    declare class SymbolItems extends Array<SymbolItem> {
 
+    }
+
+    declare class SymbolItem {
+        readonly typename: string = 'SymbolItem';
     }
 
     declare class Symbols {
 
     }
 
-    declare class TextFrameItems {
+    declare class TextFrameItems extends Array<TextFrameItem> {
 
+    }
+
+    declare class TextFrameItem {
+        readonly typename: string = 'TextFrameItem';
     }
 
     declare class EPSSaveOptions {
