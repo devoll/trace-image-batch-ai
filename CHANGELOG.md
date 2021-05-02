@@ -1,2 +1,10 @@
+# 0.0.2 (2021-05-02)
+* Convert project to typescript
+* Rebase project structure for better experience
+* Added multilanguage support
+* Extend typing for Adobe Illustrator scripting
+* Added change input filesize for Freepik requirements
+* Added create folder by current date
+
 # 0.0.1 (2021-03-14)
 * Init project
