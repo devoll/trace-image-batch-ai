@@ -1,4 +1,7 @@
 # Trace image script for Adobe Illustrator [Beta]
+
+![Image of Yaktocat](./assets/logo.png)
+
 Automation script for trace raster images and save as EPS with options for Freepic distribution
 
 [Описание по-русски](README_RU.md)
