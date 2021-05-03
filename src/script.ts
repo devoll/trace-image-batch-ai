@@ -10,6 +10,24 @@
 
 (() => {
 
+    switch(app.name){
+        case 'Adobe Illustrator':
+            AdobeIllustratorInit();
+            break;
+
+        case 'Adobe Photoshop':
+            AdobePhotoshopInit();
+            break;
+
+        default:
+            alert(Helpers.i18n("UNSUPPORTED_APP") + ": " + app.name);
+            break;
+    }
+
+
+})();
+
+function AdobeIllustratorInit(){
     const sourceFolder = Folder.selectDialog(Helpers.i18n("CHOOSE_SRC_FOLDER")) as Folder;
 
     if(!sourceFolder){
@@ -18,4 +36,10 @@
     }
 
     new Stocks.FreePick(sourceFolder);
-})();
+}
+
+function AdobePhotoshopInit(){
+    const sourceFile = File.openDialog(Helpers.i18n("CHOOSE_SRC_FILE"), "*.png");
+
+
+}
