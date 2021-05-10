@@ -1,6 +1,6 @@
 # Скрипт автоматической трассировки для Adobe Illustrator [Beta]
 
-![Image of Yaktocat](./assets/logo.png)
+![Trace Image Logo](./assets/logo.png)
 
 Скрипт автоматически трассирует с помощью Adobe Illustrator выбранные растровые файлы 
 и сохраняет их в EPS в соответствии с требованиям к дистрибуции стоков
@@ -19,7 +19,6 @@
 
 ## Релиз
 [v0.1.0](https://github.com/devoll/trace-image-batch-ai/releases/tag/v0.1.0)
-
 
 ## Как воспользоваться скриптом
 1. Скачайте(ссылка) файл скрипта
