@@ -11,6 +11,7 @@ namespace Language {
         "TITLE_USED_STOCKS": "Used photobanks",
         "SELECTED_FILES": "Total files",
         "CHOOSE_FILES_BUTTON": "Choose files",
-        "RUN_BUTTON": "Run"
+        "RUN_BUTTON": "Run",
+        "CLOSE_BUTTON": "Close"
     }
 }

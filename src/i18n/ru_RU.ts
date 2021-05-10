@@ -11,6 +11,7 @@ namespace Language {
     "TITLE_USED_STOCKS": "Используемые стоки",
     "SELECTED_FILES": "Выбрано файлов",
     "CHOOSE_FILES_BUTTON": "Выбор файлов",
-    "RUN_BUTTON": "Запустить"
+    "RUN_BUTTON": "Запустить",
+    "CLOSE_BUTTON": "Закрыть"
   }
 }

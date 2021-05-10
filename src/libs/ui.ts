@@ -11,7 +11,9 @@ namespace Libs {
             this.configs = configs;
             const w: UiWindow = new Window(
                 TI.WindowType.dialog,
-                "Trace image script"
+                "Trace image script",
+                undefined,
+                { closeButton: true }
             );
 
             w.preferredSize = [ 200, 300 ];
@@ -37,7 +39,6 @@ namespace Libs {
                 this.ChooseSourceFiles();
             };
 
-            //
             const runButton = w.add("button", undefined, Helpers.i18n("RUN_BUTTON")) as ControlObject & { onClick: () => void};
             runButton.onClick = () => {
                 // отобрать заюзаные конфиги и передать их в колбек функцию
@@ -62,6 +63,9 @@ namespace Libs {
                 w.hide();
                 fn(selectedConfigs, this.files);
             };
+
+            const closeButton = w.add("button", undefined, Helpers.i18n("CLOSE_BUTTON")) as ControlObject & { onClick: () => void};
+            closeButton.onClick = () => { w.close(); };
 
             w.show();
 
