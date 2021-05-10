@@ -15,10 +15,6 @@
             AdobeIllustratorInit();
             break;
 
-        case 'Adobe Photoshop':
-            AdobePhotoshopInit();
-            break;
-
         default:
             alert(Helpers.i18n("UNSUPPORTED_APP") + ": " + app.name);
             break;
@@ -28,18 +24,134 @@
 })();
 
 function AdobeIllustratorInit(){
-    const sourceFolder = Folder.selectDialog(Helpers.i18n("CHOOSE_SRC_FOLDER")) as Folder;
 
-    if(!sourceFolder){
-        alert(Helpers.i18n("CHOOSE_SRC_FOLDER_ERROR"));
-        return;
-    }
+    // тут будет цикл по стокам, а пока
+    const configs: TI.IConfig[] = [
+        /**
+         * FREEPIK
+         */
+        {
+            name: "Freepik",
+            vectorRequirements: {
+                resolution: {
+                    max: 80 * 1000 * 1000
+                }
+            },
+            rasterRequirements: {
+                width: {
+                    min: 2000,
+                    max: 8000
+                },
+                height: {
+                    min: 2000,
+                    max: 8000
+                }
+            },
+            releaseFile: false
+        },
 
-    new Stocks.FreePick(sourceFolder);
-}
+        /**
+         * ShutterStock
+         */
+        {
+            name: "Shutterstock",
+            vectorRequirements: false,
+            rasterRequirements: {
+                resolution: {
+                    min: 4 * 1000 *1000
+                }
+            },
+            releaseFile: false
+        },
 
-function AdobePhotoshopInit(){
-    const sourceFile = File.openDialog(Helpers.i18n("CHOOSE_SRC_FILE"), "*.png");
+        /**
+         * Adobe Stock
+         */
+        {
+            name: "Adobe Stock",
+            vectorRequirements: {
+                resolution: {
+                    min: 15 * 1000 * 1000,
+                    max: 68 * 1000 * 1000
+                }
+            },
+            rasterRequirements: {
+                resolution: {
+                    min: 4 * 1000 *1000,
+                    max: 100 * 1000 * 1000
+                }
+            },
+            releaseFile: false
+        },
+
+        /**
+         * iStock
+         */
+        {
+            name: "iStock",
+            vectorRequirements: {
+                resolution: {
+                    min: 15 * 1000 * 1000,
+                    max: 68 * 1000 * 1000
+                }
+            },
+            rasterRequirements: {
+                width: {
+                    min: 1900,
+                    max: 2800
+                },
+                height: {
+                    min: 1900,
+                    max: 2800
+                }
+            },
+            releaseFile: false
+        },
+
+        /**
+         * Deposit Photos
+         */
+        {
+            name: "Deposit Photos",
+            vectorRequirements: {
+                resolution: {
+                    min: 3.8 * 1000 * 1000
+                }
+            },
+            rasterRequirements: {
+                resolution: {
+                    min: 3.8 * 1000 * 1000
+                }
+            },
+            releaseFile: false
+        },
+    ];
+
+    const uiWindow = new Libs.UI();
+    uiWindow.ShowWindow(configs, (cfgs: TI.IConfig[], sourceFiles: File[]) => {
+
+        if(!sourceFiles || sourceFiles.length === 0){
+            alert("Не выбраны файлы для обработки");
+            return;
+        }
+
+        if(!cfgs || cfgs.length === 0){
+            alert("Не выбраны стоки");
+            return;
+        }
+
+        for(let config of cfgs){
+
+            let stock = new Libs.StockSaver(config);
+
+            for(let file of sourceFiles){
+
+                const sourceDoc = app.open(file) as IllustratorDocument; // return document object)
+                stock.process(sourceDoc)
+                sourceDoc.close(SaveOptions.DONOTSAVECHANGES);
+            }
+        }
+    });
 
 
 }

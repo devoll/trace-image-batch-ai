@@ -2,11 +2,6 @@ declare function alert(string): void;
 
 declare var app: PhotoshopApplication | IllustratorApplication;
 
-declare enum ApplicationType {
-    Photoshop = 'Adobe Photoshop',
-    Illustrator = 'Adobe Illustrator'
-}
-
 declare class Folder {
     static readonly appData: Folder;
     static readonly appPackage: string;
@@ -79,12 +74,16 @@ declare class File {
 
     static isEncodingAvailable(name: string): boolean;
 
-    static openDialog(prompt?: string, filter?: string, multiSelect?: boolean): File | null;
+    static openDialog(prompt?: string, filter?: string, multiSelect?: boolean): File | File[] | null;
 
     static saveDialog(prompt: string, preset?: string): File | null;
 
     constructor(path?): File;
 
+    /**
+     * Get absolute path to source file
+     * @type {string}
+     */
     readonly absoluteURI: string;
     readonly alias: boolean;
     readonly created: Date;

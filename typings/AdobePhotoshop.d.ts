@@ -138,7 +138,7 @@ declare class PhotoshopDocument {
 
     autoCount(channel: Channel, threshold: number): void;
     changeMode(destinationMode: ChangeMode, options?: BitmapConversionOptions | IndexedConversionOptions): void;
-    close(saving?: SaveOptions): void;
+    close(saving?: PhotoshopSaveOptions): void;
     convertProfile(destinationProfile: string, intent: Intent, blackPointCompensation?: boolean, dither?: boolean): void;
     crop(bounds: [ number, number, number, number ], angle?: number, width?: number, height?: number): void;
     duplicate( name?: string, mergeLayersOnly?: boolean): Document;
@@ -222,7 +222,7 @@ declare class Intent {
 
 }
 
-declare class SaveOptions {
+declare class PhotoshopSaveOptions {
 
 }
 

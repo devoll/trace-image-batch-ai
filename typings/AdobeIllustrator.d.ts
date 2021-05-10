@@ -2,32 +2,6 @@
  * Adobe Illustrator Type Definition
  */
 
-declare enum TypeName {
-    PageItem = 'PageItem',
-    PathItem = 'PathItem',
-    PlacedItem = 'PlacedItem',
-    SymbolItem = 'SymbolItem',
-    TextFrameItem = 'TextFrameItem',
-    Document = 'Document',
-    Application = 'Application',
-    RGBColor = 'RGBColor',
-    RasterItem = 'RasterItem',
-    GroupItem = 'GroupItem',
-    PluginItem = 'PluginItem',
-    TracingObject = 'TracingObject',
-    TracingOptions = 'TracingOptions',
-    Artboards = 'Artboards',
-    Artboard = 'Artboard',
-    CompoundPathItem = 'CompoundPathItem',
-    GraphItem = 'GraphItem',
-    LegacyTextItem = 'LegacyTextItem',
-    MeshItem = 'MeshItem',
-    NonNativeItem = 'NonNativeItem',
-    PageItems = 'PageItems',
-    PathItems = 'PathItems',
-    EPSSaveOptions = 'EPSSaveOptions'
-}
-
 /**
  * The Adobe® Illustrator® application object, referenced using the pre-defined global app object, which contains all other Illustrator objects.
  */
@@ -55,7 +29,7 @@ declare class IllustratorApplication {
     readonly startupPresetsList: object;
     readonly textFonts: TextFonts;
     readonly tracingPresetList: Array<object>;
-    readonly typename: TypeName.Application;
+    readonly typename: TI.TypeName.Application;
     userInteractionLevel: UserInteractionLevel;
     readonly version: string;
     readonly visible: string;
@@ -210,7 +184,7 @@ declare class IllustratorDocument {
     readonly tags: Tags;
     readonly textFrames: TextFrameItems;
     readonly tileFullPages: boolean;
-    readonly typename: TypeName.Document;
+    readonly typename: TI.TypeName.Document;
     readonly useDefaultScreen: boolean;
     readonly variables: Variables;
     variablesLocked: boolean;
@@ -223,7 +197,7 @@ declare class IllustratorDocument {
 
     arrange(layoutStyle?: DocumentLayoutStyle): boolean;
 
-    close(saveOptions?: SaveOptions): void;
+    close(saveOptions?: IllustratorSaveOptions): void;
 
     closeNoUI(): void;
 
@@ -352,7 +326,7 @@ declare class RGBColor {
     blue: number;
     green: number;
     red: number;
-    readonly typename: TypeName.RGBColor;
+    readonly typename: TI.TypeName.RGBColor;
 }
 
 declare class Point extends Array {
@@ -364,7 +338,9 @@ declare class Point extends Array {
 }
 
 declare class SaveOptions {
-
+    static DONOTSAVECHANGES;
+    static SAVECHANGES;
+    static PROMPTTOSAVECHANGES;
 }
 
 declare class DocumentLayoutStyle {
@@ -465,7 +441,7 @@ declare class RasterItem {
     readonly tags: Tags;
     top: number;
     readonly transparent: boolean;
-    readonly typename: TypeName.RasterItem;
+    readonly typename: TI.TypeName.RasterItem;
     uRL: string;
     visibilityVariable: Variable;
     readonly visibleBounds: [number, number, number, number];
@@ -552,7 +528,7 @@ declare class layers {
 }
 
 declare class GroupItem {
-    readonly typename: TypeName.GroupItem;
+    readonly typename: TI.TypeName.GroupItem;
 }
 
 declare class RasterLinkState {
@@ -598,7 +574,7 @@ declare class PluginItem {
     readonly tags: Tags;
     top: number;
     tracing: TracingObject;
-    readonly typename: TypeName.PluginItem;
+    readonly typename: TI.TypeName.PluginItem;
     uRL: string;
     visibilityVariable: Variable;
     readonly visibleBounds: [number, number, number, number];
@@ -664,7 +640,7 @@ declare class TracingObject {
     readonly pathCount: number;
     sourceArt: PlacedItem | RasterItem;
     tracingOptions: TracingOptions;
-    readonly typename: TypeName.TracingObject;
+    readonly typename: TI.TypeName.TracingObject;
     readonly usedColorCount: number;
 
     expandTracing(viewed?: boolean): GroupItem;
@@ -692,7 +668,7 @@ declare class TracingOptions {
     strokes: boolean;
     threshold: number;
     tracingMode: TracingModeType;
-    readonly typename: TypeName.TracingOptions;
+    readonly typename: TI.TypeName.TracingOptions;
     viewRaster: ViewRasterType;
     viewVector: ViewVectorType;
 
@@ -734,7 +710,7 @@ declare class Views {
 declare class Artboards extends Array<Artboard> {
     readonly length: number;
     readonly parent: Artboard;
-    readonly typename: TypeName.Artboards;
+    readonly typename: TI.TypeName.Artboards;
 
     add(artboardRect: Rect): Artboard;
 
@@ -758,7 +734,7 @@ declare class Artboard {
     showCenter: boolean;
     showCrossHairs: boolean;
     showSafeAreas: boolean;
-    readonly typename: TypeName.Artboard;
+    readonly typename: TI.TypeName.Artboard;
 
     remove(): void;
 }
@@ -776,7 +752,7 @@ declare class CompoundPathItems extends Array<CompoundPathItem> {
 }
 
 declare class CompoundPathItem {
-    readonly typename: TypeName.CompoundPathItem;
+    readonly typename: TI.TypeName.CompoundPathItem;
 }
 
 declare class CropOptions {
@@ -804,7 +780,7 @@ declare class GraphItems extends Array<GraphItem> {
 }
 
 declare class GraphItem {
-    readonly typename: TypeName.GraphItem;
+    readonly typename: TI.TypeName.GraphItem;
 }
 
 declare class GroupItems {
@@ -816,7 +792,7 @@ declare class LegacyTextItems extends Array<LegacyTextItem> {
 }
 
 declare class LegacyTextItem {
-    readonly typename: TypeName.LegacyTextItem;
+    readonly typename: TI.TypeName.LegacyTextItem;
 }
 
 declare class MeshItems extends Array<MeshItem> {
@@ -824,7 +800,7 @@ declare class MeshItems extends Array<MeshItem> {
 }
 
 declare class MeshItem {
-    readonly typename: TypeName.MeshItem;
+    readonly typename: TI.TypeName.MeshItem;
 }
 
 declare class NonNativeItems extends Array<NonNativeItem> {
@@ -832,13 +808,13 @@ declare class NonNativeItems extends Array<NonNativeItem> {
 }
 
 declare class NonNativeItem {
-    readonly typename: TypeName.NonNativeItem;
+    readonly typename: TI.TypeName.NonNativeItem;
 }
 
 declare class PageItems extends Array<PageItem | CompoundPathItem | GraphItem | GroupItem | LegacyTextItem | MeshItem | NonNativeItem | PathItem | PlacedItem | PluginItem | RasterItem | SymbolItem | TextFrameItem> {
     readonly length: number;
     readonly parent: any;
-    readonly typename: TypeName.PageItems;
+    readonly typename: TI.TypeName.PageItems;
 
     getByName(name: string): PageItem;
 
@@ -869,7 +845,7 @@ declare class PageItem {
     sliced: boolean;
     tags: Tags;
     top: number;
-    readonly typename: TypeName.PageItem
+    readonly typename: TI.TypeName.PageItem
     URL: string;
     visibilityVariable: any;
     width: number;
@@ -933,7 +909,7 @@ declare class ParagraphStyles {
 declare class PathItems extends Array<PathItem> {
     readonly length: number;
     readonly parent: any;
-    readonly typename: TypeName.PathItems;
+    readonly typename: TI.TypeName.PathItems;
 
     add(): PathItem;
 
@@ -1032,7 +1008,7 @@ declare class PathItem {
     strokeWidth: number;
     readonly tags: Tags;
     top: number;
-    readonly typename: TypeName.PathItem;
+    readonly typename: TI.TypeName.PathItem;
     uRL: string;
     visibilityVariable: Variable;
     readonly visibleBounds: [number, number, number, number];
@@ -1109,7 +1085,7 @@ declare class PlacedItems extends Array<PlacedItem> {
 }
 
 declare class PlacedItem {
-    readonly typename: TypeName.PlacedItem;
+    readonly typename: TI.TypeName.PlacedItem;
 }
 
 declare class RasterEffectOptions {
@@ -1145,7 +1121,7 @@ declare class SymbolItems extends Array<SymbolItem> {
 }
 
 declare class SymbolItem {
-    readonly typename: TypeName.SymbolItem;
+    readonly typename: TI.TypeName.SymbolItem;
 }
 
 declare class Symbols {
@@ -1157,7 +1133,7 @@ declare class TextFrameItems extends Array<TextFrameItem> {
 }
 
 declare class TextFrameItem {
-    readonly typename: TypeName.TextFrameItem;
+    readonly typename: TI.TypeName.TextFrameItem;
 }
 
 declare class EPSSaveOptions {
@@ -1173,7 +1149,7 @@ declare class EPSSaveOptions {
     postScript: EPSPostScriptLevelEnum = EPSPostScriptLevelEnum.LEVEL2;
     preview: EPSPreview;
     saveMultipleArtboards: boolean = false;
-    readonly typename: TypeName.EPSSaveOptions;
+    readonly typename: TI.TypeName.EPSSaveOptions;
 }
 
 declare class Compatibility {
