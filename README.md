@@ -6,11 +6,20 @@ Automation script for trace raster images and save as EPS with options for Freep
 
 [Описание по-русски](README_RU.md)
 
+Automation script for trace raster images and save as EPS with options for any photobanks
+
+## Supported photobanks:
+* Freepik (eps, jpg)
+* Shutterstock (jpg)
+* Adobe Stock (eps, jpg)
+* iStock (eps, jpg)
+* Deposit Photos (eps, jpg)
+
 ## Requirements
 * Adobe Illustrator
 
 ## Release
-[v0.0.2](https://github.com/devoll/trace-image-batch-ai/releases/tag/v0.0.2)
+[v0.1.0](https://github.com/devoll/trace-image-batch-ai/releases/tag/v0.1.0)
 
 ## How to use
 1. Download release script
@@ -35,3 +44,5 @@ npm run build
 ```
 
 Latest version will be inside `dist` folder
+
+### [CHANGELOG](CHANGELOG.md)

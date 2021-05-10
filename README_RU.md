@@ -1,16 +1,24 @@
-
 # Скрипт автоматической трассировки для Adobe Illustrator [Beta]
 
 ![Image of Yaktocat](./assets/logo.png)
 
-Скрипт автоматически трассирует с помощью Adobe Illustrator все растровые файлы 
-в выбранном каталоге и сохраняет их в EPS в соответствии с требованиям к дистрибуции стока FreePick
+Скрипт автоматически трассирует с помощью Adobe Illustrator выбранные растровые файлы 
+и сохраняет их в EPS в соответствии с требованиям к дистрибуции стоков
+
+<img src="assets/images/screenshot.png" alt="screenshot" width="200"/>
+
+## Поддерживаемые стоки
+* Freepik (eps, jpg)
+* Shutterstock (jpg)
+* Adobe Stock (eps, jpg)
+* iStock (eps, jpg)
+* Deposit Photos (eps, jpg)
 
 ## Требования
 * Adobe Illustrator
 
 ## Релиз
-[v0.0.2](https://github.com/devoll/trace-image-batch-ai/releases/tag/v0.0.2)
+[v0.1.0](https://github.com/devoll/trace-image-batch-ai/releases/tag/v0.1.0)
 
 
 ## Как воспользоваться скриптом
@@ -37,8 +45,10 @@ npm run build
 
 После завершения сборки заберите собранную версию скрипта из `dist`
 
-## Release Notes
-+ Добавить интерфейс с информацией о кол-ве обработанных файлов и кол-ве ошибочных
-+ Добавить фикс входного изображения для проверки FreePic
-+ Чинить вектор -> Переводить в Expand shape
-+ Добавить дополнительный скрипт для работы с вектором
+## ToDo
+- Добавить интерфейс с информацией о кол-ве обработанных файлов и кол-ве ошибочных
+- Добавить фикс входного изображения для проверки FreePic
+- Чинить вектор -> Переводить в Expand shape
+- Добавить дополнительный скрипт для работы с вектором
+
+### [CHANGELOG](CHANGELOG.md)
