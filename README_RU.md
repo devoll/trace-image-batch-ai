@@ -5,7 +5,7 @@
 Скрипт автоматически трассирует с помощью Adobe Illustrator выбранные растровые файлы 
 и сохраняет их в EPS в соответствии с требованиям к дистрибуции стоков
 
-<img src="assets/images/screenshot.png" alt="screenshot" width="200"/>
+<img src="assets/images/screenshot.png" alt="screenshot" width="250" align="center"/>
 
 ## Поддерживаемые стоки
 * Freepik (eps, jpg)

@@ -8,6 +8,8 @@ Automation script for trace raster images and save as EPS with options for Freep
 
 Automation script for trace raster images and save as EPS with options for any photobanks
 
+<img src="assets/images/screenshot.png" alt="screenshot" width="250" align="center"/>
+
 ## Supported photobanks:
 * Freepik (eps, jpg)
 * Shutterstock (jpg)
