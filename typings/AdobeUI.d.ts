@@ -41,12 +41,12 @@ declare class Window {
         title?: string,
         bounds?: Bounds,
         creation_properties?: {
-            resizeable: boolean,
-            su1PanelCoordinates: any,
-            closeButton: boolean,
-            maximizeButton: boolean,
-            minimizeButton: boolean,
-            independent: boolean
+            resizeable?: boolean,
+            su1PanelCoordinates?: any,
+            closeButton?: boolean,
+            maximizeButton?: boolean,
+            minimizeButton?: boolean,
+            independent?: boolean
         }
     ): void;
 
